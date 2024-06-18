@@ -16,6 +16,7 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 if isAuthenticated {
+                    //OnboardingView()
                     MainView()
                 } else {
                     Image(.launchScreen)
@@ -42,7 +43,6 @@ struct ContentView: View {
         }
     }
 }
-
 
 struct GameCenterViewControllerWrapper: UIViewControllerRepresentable {
     class Coordinator: NSObject, GKGameCenterControllerDelegate {
@@ -80,4 +80,3 @@ struct GameCenterViewControllerWrapper: UIViewControllerRepresentable {
 #Preview {
     ContentView()
 }
-

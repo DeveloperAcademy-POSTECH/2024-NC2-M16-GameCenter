@@ -80,7 +80,7 @@ struct MainView: View {
                             }
                         )
                         
-                        Text("겨루기")
+                        Text("순위표")
                           .font(Font.custom("Galmuri11", size: 12))
                           .foregroundStyle(.button)
                           .padding(.top, 8)
@@ -157,6 +157,7 @@ struct MainView: View {
                 .padding(.bottom, 20)
             }
         }
+        .navigationBarHidden(true)
         .onAppear {
             if let loadedGame = UserDefaults.standard.loadBingoGame() {
                 game = loadedGame
