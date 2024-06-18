@@ -17,8 +17,11 @@ struct MapView: View {
             
             ScrollView(showsIndicators: false, content: {
                 VStack(spacing: 20) {
-                    Image(.imgLv1)
-                        .padding(.top, 24)
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                    }) {
+                        Image(.imgLv1)
+                    }.padding(.top, 24)
                     
                     Image(.imgLv2)
                     
