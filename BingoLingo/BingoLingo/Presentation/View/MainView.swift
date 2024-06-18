@@ -26,9 +26,7 @@ struct MainView: View {
             VStack(alignment: .center, spacing: 0) {
                 HStack {
                     VStack(spacing: 0) {
-                        NavigationLink {
-                            MapView()
-                        } label: {
+                        NavigationLinkWithHaptic(destination: MapView()) {
                             Image(isMapPressed ? .btnMap2 : .btnMap)
                         }
                         .onLongPressGesture(
@@ -62,6 +60,7 @@ struct MainView: View {
                     
                     VStack(spacing: 0) {
                         Button(action: {
+                            HapticManager.shared.notification(type: .success)
                             showLeaderboard = true
                         }) {
                             Image(isRankPressed ? .btnRank2 : .btnRank)
@@ -140,8 +139,8 @@ struct MainView: View {
                   .multilineTextAlignment(.center)
                   .foregroundStyle(.alarm)
                 
-                Link(destination: URL(string: "https://forms.gle/fWAAdZQwx3x91jLD6")!) {
-                    Image(isPressed ? .btnSuggest2 : .btnSuggest1)
+                LinkWithHaptic(url: URL(string: "https://forms.gle/fWAAdZQwx3x91jLD6")!) {
+                    Image(isPressed ? "btnSuggest2" : "btnSuggest1")
                 }
                 .onLongPressGesture(
                     minimumDuration: 0.1,

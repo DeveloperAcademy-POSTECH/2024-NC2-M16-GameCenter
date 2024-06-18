@@ -207,6 +207,7 @@ struct BingoCellView: View {
         }
         .frame(width: 71, height: 76)
         .onTapGesture {
+            HapticManager.shared.notification(type: .success)
             selectedRow = row
             selectedCol = col
         }

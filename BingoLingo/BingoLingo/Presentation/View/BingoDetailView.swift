@@ -130,6 +130,7 @@ struct BingoDetailView: View {
                     Spacer()
                     
                     Button(action: {
+                        HapticManager.shared.notification(type: .success)
                         requestPhotoLibraryPermission {
                             showImagePicker = true
                         }
@@ -183,6 +184,7 @@ struct BingoDetailView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
+                    HapticManager.shared.notification(type: .success)
                     presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(isBackPressed ? "btnBack2" : "btnBack1")

@@ -18,6 +18,7 @@ struct MapView: View {
             ScrollView(showsIndicators: false, content: {
                 VStack(spacing: 20) {
                     Button(action: {
+                        HapticManager.shared.notification(type: .success)
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         Image(.imgLv1)
@@ -35,6 +36,7 @@ struct MapView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button(action: {
+                    HapticManager.shared.notification(type: .success)
                     presentationMode.wrappedValue.dismiss()
                 }) {
                     Image(isBackPressed ? .btnBack2 : .btnBack1)
