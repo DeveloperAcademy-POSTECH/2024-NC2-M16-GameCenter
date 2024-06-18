@@ -155,7 +155,7 @@ struct MainView: View {
                     }
                 )
                 .padding(.top, 4)
-                .padding(.bottom, 30)
+                .padding(.bottom, 20)
             }
         }
         .onAppear {

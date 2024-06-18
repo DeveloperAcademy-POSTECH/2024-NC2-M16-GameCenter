@@ -6,12 +6,13 @@
 //
 
 struct Restaurant {
-    var name: String
-    var location: String
-    var phone: String
-    var time: String
-    var menu: String
-    var latitude: Double
-    var longitude: Double
-    var isPhotoVerified: Bool
+    let name: String
+    let location: String
+    let phone: String
+    let time: String
+    let menu: String
+    let latitude: Double
+    let longitude: Double
+    let isPhotoVerified: Bool
+    let images: [String]
 }

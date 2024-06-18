@@ -39,8 +39,8 @@ struct BingoDetailView: View {
                             .foregroundColor(.place)
                             .padding(.leading, 6)
                     }
-                    .padding(.bottom, 8)
-                    .padding(.top, 30)
+                    .padding(.bottom, 10)
+                    .padding(.top, 20)
                     
                     CustomMapView(markerLatitude: game.restaurants[row][col].latitude, markerLongitude: game.restaurants[row][col].longitude)
                         .frame(width: 353, height: 200)
@@ -51,32 +51,18 @@ struct BingoDetailView: View {
                         )
                     
                     HStack(spacing: 7) {
-                        Image("imgDummy2")
-                            .resizable()
-                            .frame(width: 113, height: 113)
-                            .overlay(
-                                Rectangle()
-                                    .inset(by: 0.5)
-                                    .stroke(Color.map, lineWidth: 1)
-                            )
-                        
-                        Image("imgDummy2")
-                            .resizable()
-                            .frame(width: 113, height: 113)
-                            .overlay(
-                                Rectangle()
-                                    .inset(by: 0.5)
-                                    .stroke(Color.map, lineWidth: 1)
-                            )
-                        
-                        Image("imgDummy2")
-                            .resizable()
-                            .frame(width: 113, height: 113)
-                            .overlay(
-                                Rectangle()
-                                    .inset(by: 0.5)
-                                    .stroke(Color.map, lineWidth: 1)
-                            )
+                        ForEach(game.restaurants[row][col].images, id: \.self) { imageName in
+                            Image(imageName)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 113, height: 113)
+                                .clipped()
+                                .overlay(
+                                    Rectangle()
+                                        .inset(by: 0.5)
+                                        .stroke(Color.map, lineWidth: 1)
+                                )
+                        }
                     }
                     .padding(.top, 8)
                     
@@ -114,8 +100,9 @@ struct BingoDetailView: View {
                             
                             Text(game.restaurants[row][col].time)
                                 .font(Font.custom("Galmuri11", size: 12))
+                                .lineSpacing(12)
                                 .foregroundColor(.place)
-                                .frame(width: 169, height: 90, alignment: .topLeading)
+                                .frame(width: 169, height: 130, alignment: .topLeading)
                                 .padding(.top, 8)
                         }
                         
@@ -131,11 +118,12 @@ struct BingoDetailView: View {
                             
                             Text(game.restaurants[row][col].menu)
                                 .font(Font.custom("Galmuri11", size: 12))
+                                .lineSpacing(12)
                                 .foregroundColor(.place)
-                                .frame(width: 169, height: 90, alignment: .topLeading)
+                                .frame(width: 169, height: 130, alignment: .topLeading)
                                 .padding(.top, 8)
                         }
-                        .padding(.leading, 14)
+                        .padding(.leading, 16)
                     }
                     .padding(.top, 24)
                     
@@ -160,7 +148,7 @@ struct BingoDetailView: View {
                             print("Long press completed")
                         }
                     )
-                    .padding(.bottom, 30)
+                    .padding(.bottom, 20)
                     
                     .sheet(isPresented: $showImagePicker, onDismiss: {
                         if selectedImage != nil {
@@ -187,7 +175,7 @@ struct BingoDetailView: View {
                             .transition(.opacity)
                             .animation(.easeInOut(duration: 0.5))
                     }
-                    .padding(.bottom, 110)
+                    .padding(.bottom, 100)
                 }
             }
         }
