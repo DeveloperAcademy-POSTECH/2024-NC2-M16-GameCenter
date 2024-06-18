@@ -158,8 +158,11 @@ struct MainView: View {
             }
         }
         .onAppear {
-            bingoCount = game.bingoCount()
-            markedCount = game.markedCount()
+            if let loadedGame = UserDefaults.standard.loadBingoGame() {
+                game = loadedGame
+                bingoCount = game.bingoCount()
+                markedCount = game.markedCount()
+            }
         }
     }
     

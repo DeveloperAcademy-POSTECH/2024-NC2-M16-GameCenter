@@ -24,6 +24,7 @@
 		1EC71FB02C1F632B00CE5297 /* Helper+BackSwipeGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC71FAF2C1F632B00CE5297 /* Helper+BackSwipeGesture.swift */; };
 		1EC71FB22C1FBDCA00CE5297 /* CustomMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC71FB12C1FBDCA00CE5297 /* CustomMapView.swift */; };
 		1ECB0BFA2C211C5E0059965A /* Helper+Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECB0BF92C211C5E0059965A /* Helper+Haptic.swift */; };
+		1ECB0BFC2C21B8B80059965A /* BingoGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECB0BFB2C21B8B80059965A /* BingoGame.swift */; };
 		CE94ED12EC4D22F32AB2E5C1 /* Pods_BingoLingo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22748905EB8973646686FBA7 /* Pods_BingoLingo.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		1EC71FAF2C1F632B00CE5297 /* Helper+BackSwipeGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper+BackSwipeGesture.swift"; sourceTree = "<group>"; };
 		1EC71FB12C1FBDCA00CE5297 /* CustomMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMapView.swift; sourceTree = "<group>"; };
 		1ECB0BF92C211C5E0059965A /* Helper+Haptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Helper+Haptic.swift"; sourceTree = "<group>"; };
+		1ECB0BFB2C21B8B80059965A /* BingoGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BingoGame.swift; sourceTree = "<group>"; };
 		22748905EB8973646686FBA7 /* Pods_BingoLingo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BingoLingo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7E68AA7FD6D13EE80BF5A8 /* Pods-BingoLingo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BingoLingo.release.xcconfig"; path = "Target Support Files/Pods-BingoLingo/Pods-BingoLingo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -169,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				1EBF59322C2010A500463499 /* Restaurant.swift */,
+				1ECB0BFB2C21B8B80059965A /* BingoGame.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				1EBF59332C2010A600463499 /* Restaurant.swift in Sources */,
 				1EAF2A192C1BF23D0009AF42 /* BingoView.swift in Sources */,
 				1EC71FAE2C1F5BEC00CE5297 /* MapView.swift in Sources */,
+				1ECB0BFC2C21B8B80059965A /* BingoGame.swift in Sources */,
 				1EC71FB22C1FBDCA00CE5297 /* CustomMapView.swift in Sources */,
 				1EBF59302C20012F00463499 /* ImagePicker.swift in Sources */,
 				1EAF2A042C1BF1010009AF42 /* ContentView.swift in Sources */,

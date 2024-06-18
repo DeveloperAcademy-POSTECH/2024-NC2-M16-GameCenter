@@ -17,6 +17,7 @@ struct BingoDetailView: View {
     @State private var selectedImage: UIImage?
     @State private var isButtonDisabled = false
     @State private var showToast = false
+    @State private var showFailToast = false
     @State private var showBingoCompletion = false
     @State private var ocrText: String = ""
     
@@ -25,6 +26,14 @@ struct BingoDetailView: View {
     @Binding var markedCount: Int
     var row: Int
     var col: Int
+    
+    init(game: Binding<BingoGame>, bingoCount: Binding<Int>, markedCount: Binding<Int>, row: Int, col: Int) {
+        self._game = game
+        self._bingoCount = bingoCount
+        self._markedCount = markedCount
+        self.row = row
+        self.col = col
+    }
     
     var body: some View {
         NavigationView {
@@ -165,11 +174,19 @@ struct BingoDetailView: View {
                                     bingoCount = newBingoCount
                                     markedCount = game.markedCount()
                                     print("success")
+                                    
+                                    UserDefaults.standard.saveBingoGame(game)
+
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                                         showToast = false
                                     }
                                 } else {
+                                    showFailToast = true
                                     print("fail")
+                                    
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                        showFailToast = false
+                                    }
                                 }
                             }
                         }
@@ -186,6 +203,26 @@ struct BingoDetailView: View {
                             .animation(.easeInOut(duration: 0.5))
                     }
                     .padding(.bottom, 100)
+                }
+                if showFailToast {
+                    VStack {
+                        Image("imgFail")
+                            .transition(.opacity)
+                            .animation(.easeInOut(duration: 0.5))
+                    }
+                    .padding(.bottom, 100)
+                }
+            }
+        }
+        .onAppear {
+            if let loadedGame = UserDefaults.standard.loadBingoGame() {
+                game = loadedGame
+                bingoCount = game.bingoCount()
+                markedCount = game.markedCount()
+                if game.board[row][col]{
+                    isButtonDisabled = true
+                } else {
+                    isButtonDisabled = false
                 }
             }
         }
@@ -278,6 +315,11 @@ struct BingoDetailView: View {
         let s2Array = Array(s2)
         let n = s1Array.count
         let m = s2Array.count
+        
+        // Edge case: Check for empty strings
+        if n == 0 { return m }
+        if m == 0 { return n }
+        
         var d = [[Int]](repeating: [Int](repeating: 0, count: m + 1), count: n + 1)
 
         for i in 0...n {

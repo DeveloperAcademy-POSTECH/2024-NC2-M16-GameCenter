@@ -5,7 +5,7 @@
 //  Created by KimYuBin on 6/17/24.
 //
 
-struct Restaurant {
+struct Restaurant: Codable {
     let name: String
     let location: String
     let phone: String
