@@ -175,6 +175,10 @@ struct BingoDetailView: View {
                                     markedCount = game.markedCount()
                                     print("success")
                                     
+                                    let gameCenterManager = GameCenterManager.shared
+
+                                    gameCenterManager.reportBingoCount(game.markedCount())
+
                                     UserDefaults.standard.saveBingoGame(game)
 
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
