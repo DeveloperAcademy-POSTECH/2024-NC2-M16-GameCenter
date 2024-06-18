@@ -199,27 +199,42 @@ struct BingoCellView: View {
     @Binding var selectedCol: Int?
     @Binding var showBingoCompletion: Bool
     
+    @State private var isBingoPressed = false
+    
     var body: some View {
         VStack {
-            BingoCellImageView(game: $game, row: row, col: col)
+            BingoCellImageView(game: $game, isBingoPressed: $isBingoPressed, row: row, col: col)
         }
         .frame(width: 71, height: 76)
         .onTapGesture {
             selectedRow = row
             selectedCol = col
         }
+        .onLongPressGesture(
+            minimumDuration: 0.1,
+            pressing: { pressing in
+                withAnimation {
+                    isBingoPressed = pressing
+                }
+            },
+            perform: {
+                print("Long press completed")
+            }
+        )
     }
 }
 
 
 struct BingoCellImageView: View {
     @Binding var game: BingoGame
+    @Binding var isBingoPressed: Bool
+    
     let row: Int
     let col: Int
     
     var body: some View {
         ZStack {
-            Image(game.board[row][col] ? "btnBingo2" : "btnBingo1")
+            Image(isBingoPressed ? "btnBingo3" : (game.board[row][col] ? "btnBingo2" : "btnBingo1"))
                 .resizable()
                 .frame(width: 71, height: 76)
             
