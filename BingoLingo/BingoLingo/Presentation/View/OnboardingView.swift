@@ -17,16 +17,6 @@ struct OnboardingView: View {
             Color.background.ignoresSafeArea()
 
             VStack(spacing: 0) {
-//                HStack(spacing: 0) {
-//                    Text("\(currentPage + 1) ")
-//                        .font(Font.custom("Galmuri11", size: 12))
-//                        .foregroundStyle(.white)
-//                    Text("/ \(totalPages)")
-//                        .font(Font.custom("Galmuri11", size: 12))
-//                        .foregroundStyle(.place)
-//                }
-//                .padding(.top, 20)
-
                 TabView(selection: $currentPage) {
                     onboardingContent(for: 0)
                         .tag(0)
@@ -70,27 +60,25 @@ struct OnboardingView: View {
     private func onboardingContent(for page: Int) -> some View {
         switch page {
         case 0:
-            VStack {
-                Image(.dummyOnboarding)
+            VStack(spacing: 0) {
+                Spacer()
                 
-                HStack(spacing: 8) {
-                    ForEach(0..<totalPages, id: \.self) { index in
-                        Circle()
-                            .fill(index == currentPage ? Color.place : Color.circle)
-                            .frame(width: 8, height: 8)
-                    }
-                }
+                Text("포항 맛집 쉽게 찾자!")
+                  .font(Font.custom("DungGeunMo", size: 26))
+                  .multilineTextAlignment(.center)
+                  .foregroundStyle(Color.place)
+                  .padding(.bottom, 26)
+                
+                Image(.imgOnboarding1)
                 
                 Text("빙고링고에서 제공하는\n음식점의 정보를 확인해 보세요!")
                     .font(Font.custom("Galmuri11", size: 16))
                     .multilineTextAlignment(.center)
                     .lineSpacing(8)
-                    .foregroundStyle(Color.button)
-                    .padding(.top, 24)
-            }
-        case 1:
-            VStack {
-                Image(.dummyOnboarding)
+                    .foregroundStyle(Color.place)
+                    .padding(.top, 40)
+                
+                Spacer()
                 
                 HStack(spacing: 8) {
                     ForEach(0..<totalPages, id: \.self) { index in
@@ -99,17 +87,28 @@ struct OnboardingView: View {
                             .frame(width: 8, height: 8)
                     }
                 }
+                .padding(.bottom, 24)
+            }
+        case 1:
+            VStack(spacing: 0) {
+                Spacer()
                 
-                Text("갤러리의 해당 가게 영수증 사진을 등록하면\n빙고가 완성됩니다.")
+                Text("영수증 인증으로 빙고!")
+                  .font(Font.custom("DungGeunMo", size: 26))
+                  .multilineTextAlignment(.center)
+                  .foregroundStyle(Color.place)
+                  .padding(.bottom, 26)
+                
+                Image(.imgOnboarding2)
+                
+                Text("갤러리의 해당 가게 영수증 사진을\n등록하면 빙고가 완성됩니다.")
                     .font(Font.custom("Galmuri11", size: 16))
                     .multilineTextAlignment(.center)
                     .lineSpacing(8)
-                    .foregroundStyle(Color.button)
-                    .padding(.top, 24)
-            }
-        case 2:
-            VStack {
-                Image(.dummyOnboarding)
+                    .foregroundStyle(Color.place)
+                    .padding(.top, 40)
+                
+                Spacer()
                 
                 HStack(spacing: 8) {
                     ForEach(0..<totalPages, id: \.self) { index in
@@ -118,17 +117,28 @@ struct OnboardingView: View {
                             .frame(width: 8, height: 8)
                     }
                 }
+                .padding(.bottom, 24)
+            }
+        case 2:
+            VStack(spacing: 0) {
+                Spacer()
+                
+                Text("친구들과 함께하자!")
+                  .font(Font.custom("DungGeunMo", size: 26))
+                  .multilineTextAlignment(.center)
+                  .foregroundStyle(Color.place)
+                  .padding(.bottom, 26)
+                
+                Image(.imgOnboarding3)
                 
                 Text("Game Center의 순위표를 통해\n친구의 기록도 확인해 보세요!")
                     .font(Font.custom("Galmuri11", size: 16))
                     .multilineTextAlignment(.center)
                     .lineSpacing(8)
-                    .foregroundStyle(Color.button)
-                    .padding(.top, 24)
-            }
-        case 3:
-            VStack {
-                Image(.dummyOnboarding)
+                    .foregroundStyle(Color.place)
+                    .padding(.top, 40)
+                
+                Spacer()
                 
                 HStack(spacing: 8) {
                     ForEach(0..<totalPages, id: \.self) { index in
@@ -137,13 +147,37 @@ struct OnboardingView: View {
                             .frame(width: 8, height: 8)
                     }
                 }
+                .padding(.bottom, 24)
+            }
+        case 3:
+            VStack(spacing: 0) {
+                Spacer()
+                
+                Text("맛집은 널리널리")
+                  .font(Font.custom("DungGeunMo", size: 26))
+                  .multilineTextAlignment(.center)
+                  .foregroundStyle(Color.place)
+                  .padding(.bottom, 26)
+                
+                Image(.imgOnboarding4)
                 
                 Text("추천하고 싶은 가게가 있으시다면 맛집 제안하기를 통해 제안 주세요!")
                     .font(Font.custom("Galmuri11", size: 16))
                     .multilineTextAlignment(.center)
                     .lineSpacing(8)
-                    .foregroundStyle(Color.button)
-                    .padding(.top, 24)
+                    .foregroundStyle(Color.place)
+                    .padding(.top, 40)
+                
+                Spacer()
+                
+                HStack(spacing: 8) {
+                    ForEach(0..<totalPages, id: \.self) { index in
+                        Circle()
+                            .fill(index == currentPage ? Color.place : Color.circle)
+                            .frame(width: 8, height: 8)
+                    }
+                }
+                .padding(.bottom, 24)
             }
         default:
             EmptyView()
