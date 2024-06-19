@@ -16,8 +16,8 @@ struct ContentView: View {
         NavigationView {
             VStack {
                 if isAuthenticated {
-                    //OnboardingView()
-                    MainView()
+                    OnboardingView()
+                    //MainView()
                 } else {
                     Image(.launchScreen)
                         .ignoresSafeArea()
