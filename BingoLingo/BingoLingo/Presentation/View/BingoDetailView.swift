@@ -313,7 +313,7 @@ struct BingoDetailView: View {
         }
     }
 
-    // Levenshtein Distance 계산 함수
+    /// Levenshtein Distance 계산 함수
     func levenshteinDistance(_ s1: String, _ s2: String) -> Int {
         let s1Array = Array(s1)
         let s2Array = Array(s2)
@@ -345,33 +345,22 @@ struct BingoDetailView: View {
         return d[n][m]
     }
 
-    // 문자열 정규화 함수
+    /// 문자열 정규화 함수
     func normalizeString(_ text: String) -> String {
         return text.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
     }
 
-    // 부분 일치 여부 확인 함수
-    func isPartialMatch(_ text1: String, _ text2: String, threshold: Int) -> Bool {
-        let normalizedText1 = normalizeString(text1)
-        let normalizedText2 = normalizeString(text2)
-        
-        let distance = levenshteinDistance(normalizedText1, normalizedText2)
-        let maxLength = max(normalizedText1.count, normalizedText2.count)
-        
-        // 정확도 계산: (1 - (편집 거리 / 최대 길이)) * 100
-        let similarity = (1 - Double(distance) / Double(maxLength)) * 100
-        return similarity >= Double(threshold)
-    }
-
-    // 주소 또는 가게 이름 검증 함수
+    /// 주소 또는 가게 이름 검증 함수
     func verifyAddressOrName(ocrText: String, storeAddress: String, storeName: String) -> Bool {
-        let threshold = 90 // 일치율 90% 이상을 요구
+        let normalizedOCRText = normalizeString(ocrText)
+        let normalizedStoreAddress = normalizeString(storeAddress)
+        let normalizedStoreName = normalizeString(storeName)
         
-        // OCR 텍스트와 가게 주소 및 이름을 비교
-        let isAddressMatch = isPartialMatch(ocrText, storeAddress, threshold: threshold)
-        let isNameMatch = isPartialMatch(ocrText, storeName, threshold: threshold)
+        // OCR 텍스트에 가게 주소 또는 이름이 포함되어 있는지 확인
+        let isAddressMatch = normalizedOCRText.contains(normalizedStoreAddress)
+        let isNameMatch = normalizedOCRText.contains(normalizedStoreName)
         
-        // 주소 또는 이름 중 하나라도 일치하면 인증 성공
+        // 주소 또는 이름 중 하나라도 포함되어 있으면 인증 성공
         if isAddressMatch || isNameMatch {
             print("OCR Text: \(ocrText)")
             print("Store Address: \(storeAddress)")
@@ -384,6 +373,7 @@ struct BingoDetailView: View {
             return false
         }
     }
+
 }
 
 struct BingoDetailView_Previews: PreviewProvider {
