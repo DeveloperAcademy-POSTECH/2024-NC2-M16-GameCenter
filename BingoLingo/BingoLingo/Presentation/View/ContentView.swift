@@ -17,7 +17,6 @@ struct ContentView: View {
             VStack {
                 if isAuthenticated {
                     OnboardingView()
-                    //MainView()
                 } else {
                     Image(.launchScreen)
                         .ignoresSafeArea()
@@ -29,15 +28,20 @@ struct ContentView: View {
 
     func authenticateUser() {
         let localPlayer = GKLocalPlayer.local
+        
         localPlayer.authenticateHandler = { viewController, error in
             if let viewController = viewController {
-                UIApplication.shared.windows.first?.rootViewController?.present(viewController, animated: true, completion: nil)
+                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                    if let window = windowScene.windows.first {
+                        window.rootViewController?.present(viewController, animated: true, completion: nil)
+                    }
+                }
             } else if localPlayer.isAuthenticated {
                 isAuthenticated = true
             } else {
                 isAuthenticated = false
                 if let error = error {
-                    print("Authentication failed: \(error.localizedDescription)")
+                    print("인증 실패: \(error.localizedDescription)")
                 }
             }
         }
@@ -66,8 +70,12 @@ struct GameCenterViewControllerWrapper: UIViewControllerRepresentable {
         DispatchQueue.main.async {
             let gameCenterViewController = GKGameCenterViewController()
             gameCenterViewController.gameCenterDelegate = context.coordinator
-            gameCenterViewController.viewState = .leaderboards
-            viewController.present(gameCenterViewController, animated: true, completion: nil)
+
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+                if let window = windowScene.windows.first {
+                    window.rootViewController?.present(gameCenterViewController, animated: true, completion: nil)
+                }
+            }
         }
         return viewController
     }
