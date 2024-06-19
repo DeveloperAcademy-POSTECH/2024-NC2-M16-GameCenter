@@ -6,82 +6,26 @@
 //
 
 import SwiftUI
-import GameKit
 
 struct ContentView: View {
-    @State private var isAuthenticated = false
-    @State private var showLeaderboard = false
+    @StateObject private var gameCenterManager = GameCenterManager.shared
 
     var body: some View {
         NavigationView {
             VStack {
-                if isAuthenticated {
+                if gameCenterManager.isAuthenticated {
                     OnboardingView()
                 } else {
-                    Image(.launchScreen)
-                        .ignoresSafeArea()
-                }
-            }
-            .onAppear(perform: authenticateUser)
-        }
-    }
-
-    func authenticateUser() {
-        let localPlayer = GKLocalPlayer.local
-        
-        localPlayer.authenticateHandler = { viewController, error in
-            if let viewController = viewController {
-                if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                    if let window = windowScene.windows.first {
-                        window.rootViewController?.present(viewController, animated: true, completion: nil)
-                    }
-                }
-            } else if localPlayer.isAuthenticated {
-                isAuthenticated = true
-            } else {
-                isAuthenticated = false
-                if let error = error {
-                    print("인증 실패: \(error.localizedDescription)")
+                    Image("LaunchScreen")
+                        .resizable()
+                        .scaledToFill()
+                        .edgesIgnoringSafeArea(.all)
+                        .onTapGesture {
+                            gameCenterManager.authenticateLocalPlayer()
+                        }
                 }
             }
         }
-    }
-}
-
-struct GameCenterViewControllerWrapper: UIViewControllerRepresentable {
-    class Coordinator: NSObject, GKGameCenterControllerDelegate {
-        var parent: GameCenterViewControllerWrapper
-
-        init(parent: GameCenterViewControllerWrapper) {
-            self.parent = parent
-        }
-
-        func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
-            gameCenterViewController.dismiss(animated: true, completion: nil)
-        }
-    }
-
-    func makeCoordinator() -> Coordinator {
-        return Coordinator(parent: self)
-    }
-
-    func makeUIViewController(context: Context) -> UIViewController {
-        let viewController = UIViewController()
-        DispatchQueue.main.async {
-            let gameCenterViewController = GKGameCenterViewController()
-            gameCenterViewController.gameCenterDelegate = context.coordinator
-
-            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-                if let window = windowScene.windows.first {
-                    window.rootViewController?.present(gameCenterViewController, animated: true, completion: nil)
-                }
-            }
-        }
-        return viewController
-    }
-
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        // 업데이트 로직이 필요하지 않음
     }
 }
 

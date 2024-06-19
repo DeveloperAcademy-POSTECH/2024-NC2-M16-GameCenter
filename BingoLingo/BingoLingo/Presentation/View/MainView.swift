@@ -61,12 +61,10 @@ struct MainView: View {
                     VStack(spacing: 0) {
                         Button(action: {
                             HapticManager.shared.notification(type: .success)
-                            showLeaderboard = true
+                            GameCenterManager.shared.showLeaderboard()
+                            
                         }) {
                             Image(isRankPressed ? .btnRank2 : .btnRank)
-                        }
-                        .sheet(isPresented: $showLeaderboard) {
-                            GameCenterViewControllerWrapper()
                         }
                         .onLongPressGesture(
                             minimumDuration: 0.1,
