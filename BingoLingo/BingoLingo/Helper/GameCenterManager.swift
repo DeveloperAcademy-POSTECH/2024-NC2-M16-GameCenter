@@ -58,12 +58,12 @@ class GameCenterManager: NSObject, GKGameCenterControllerDelegate, ObservableObj
             return
         }
 
-        // 점수 객체 생성 및 설정
-        let score = GKScore(leaderboardIdentifier: "001")
-        score.value = Int64(count)
+        let score = GKLeaderboardScore()
+        score.leaderboardID = "001"
+        score.value = Int(count)
 
         // 점수 저장
-        GKScore.report([score]) { error in
+        GKLeaderboard.submitScore(score.value, context: 0, player: GKLocalPlayer.local, leaderboardIDs: [score.leaderboardID]) { error in
             if let error = error {
                 print("Failed to report score: \(error.localizedDescription)")
             } else {
