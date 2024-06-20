@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var isAuthenticated = false
-    @State private var showLeaderboard = false
-    
-    @State var game = BingoGame()
     @State private var bingoCount = 0
     @State private var markedCount = 0
-    
     @State private var isPressed = false
     @State private var isMapPressed = false
     @State private var isRankPressed = false
+    
+    @State var game = BingoGame()
+    
+    @StateObject private var gameCenterManager = GameCenterManager.shared
     
     var body: some View {
         ZStack {
@@ -61,8 +60,11 @@ struct MainView: View {
                     VStack(spacing: 0) {
                         Button(action: {
                             HapticManager.shared.notification(type: .success)
-                            GameCenterManager.shared.showLeaderboard()
-                            
+                            if gameCenterManager.isAuthenticated {
+                                gameCenterManager.showLeaderboard()
+                            } else {
+                                gameCenterManager.authenticateLocalPlayer()
+                            }
                         }) {
                             Image(isRankPressed ? .btnRank2 : .btnRank)
                         }

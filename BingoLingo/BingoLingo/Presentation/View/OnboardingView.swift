@@ -61,13 +61,12 @@ struct OnboardingView: View {
         switch page {
         case 0:
             VStack(spacing: 0) {
-                Spacer()
-                
                 Text("포항 맛집 쉽게 찾자!")
                   .font(Font.custom("DungGeunMo", size: 26))
                   .multilineTextAlignment(.center)
                   .foregroundStyle(Color.place)
-                  .padding(.bottom, 26)
+                  .padding(.bottom, 20)
+                  .padding(.top, 40)
                 
                 Image(.imgOnboarding1)
                 
@@ -76,7 +75,7 @@ struct OnboardingView: View {
                     .multilineTextAlignment(.center)
                     .lineSpacing(8)
                     .foregroundStyle(Color.place)
-                    .padding(.top, 40)
+                    .padding(.top, 20)
                 
                 Spacer()
                 
@@ -91,13 +90,12 @@ struct OnboardingView: View {
             }
         case 1:
             VStack(spacing: 0) {
-                Spacer()
-                
                 Text("영수증 인증으로 빙고!")
                   .font(Font.custom("DungGeunMo", size: 26))
                   .multilineTextAlignment(.center)
                   .foregroundStyle(Color.place)
-                  .padding(.bottom, 26)
+                  .padding(.bottom, 20)
+                  .padding(.top, 40)
                 
                 Image(.imgOnboarding2)
                 
@@ -106,7 +104,7 @@ struct OnboardingView: View {
                     .multilineTextAlignment(.center)
                     .lineSpacing(8)
                     .foregroundStyle(Color.place)
-                    .padding(.top, 40)
+                    .padding(.top, 20)
                 
                 Spacer()
                 
@@ -121,13 +119,12 @@ struct OnboardingView: View {
             }
         case 2:
             VStack(spacing: 0) {
-                Spacer()
-                
                 Text("친구들과 함께하자!")
                   .font(Font.custom("DungGeunMo", size: 26))
                   .multilineTextAlignment(.center)
                   .foregroundStyle(Color.place)
-                  .padding(.bottom, 26)
+                  .padding(.bottom, 20)
+                  .padding(.top, 40)
                 
                 Image(.imgOnboarding3)
                 
@@ -136,7 +133,14 @@ struct OnboardingView: View {
                     .multilineTextAlignment(.center)
                     .lineSpacing(8)
                     .foregroundStyle(Color.place)
-                    .padding(.top, 40)
+                    .padding(.top, 20)
+                
+                Text("순위표(게임센터)에 로그인해야만\n친구와 겨루기가 가능합니다!")
+                    .font(Font.custom("Galmuri11", size: 13))
+                    .multilineTextAlignment(.center)
+                    .lineSpacing(8)
+                    .foregroundStyle(Color.light)
+                    .padding(.top, 20)
                 
                 Spacer()
                 
@@ -151,13 +155,12 @@ struct OnboardingView: View {
             }
         case 3:
             VStack(spacing: 0) {
-                Spacer()
-                
                 Text("맛집은 널리널리")
                   .font(Font.custom("DungGeunMo", size: 26))
                   .multilineTextAlignment(.center)
                   .foregroundStyle(Color.place)
-                  .padding(.bottom, 26)
+                  .padding(.bottom, 20)
+                  .padding(.top, 40)
                 
                 Image(.imgOnboarding4)
                 
@@ -166,7 +169,7 @@ struct OnboardingView: View {
                     .multilineTextAlignment(.center)
                     .lineSpacing(8)
                     .foregroundStyle(Color.place)
-                    .padding(.top, 40)
+                    .padding(.top, 20)
                 
                 Spacer()
                 

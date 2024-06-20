@@ -6,7 +6,6 @@
 //
 
 import GameKit
-import Combine
 
 class GameCenterManager: NSObject, GKGameCenterControllerDelegate, ObservableObject {
     static let shared = GameCenterManager()
@@ -16,7 +15,6 @@ class GameCenterManager: NSObject, GKGameCenterControllerDelegate, ObservableObj
 
     override init() {
         super.init()
-        authenticateLocalPlayer()
     }
 
     func authenticateLocalPlayer() {
@@ -25,6 +23,7 @@ class GameCenterManager: NSObject, GKGameCenterControllerDelegate, ObservableObj
 
         GKLocalPlayer.local.authenticateHandler = { [weak self] viewController, error in
             guard let self = self else { return }
+            self.authenticating = false
             if let error = error {
                 print("Authentication failed: \(error.localizedDescription)")
                 self.isAuthenticated = false
@@ -41,7 +40,6 @@ class GameCenterManager: NSObject, GKGameCenterControllerDelegate, ObservableObj
                 self.isAuthenticated = false
                 print("Player not authenticated")
             }
-            self.authenticating = false
         }
     }
 
@@ -64,19 +62,15 @@ class GameCenterManager: NSObject, GKGameCenterControllerDelegate, ObservableObj
     }
 
     func showLeaderboard() {
-        guard isAuthenticated else {
-            print("Player is not authenticated")
-            return
-        }
-
+        let leaderboardID = "001"
         let viewController = GKGameCenterViewController(state: .leaderboards)
         viewController.gameCenterDelegate = self
-        viewController.leaderboardIdentifier = "001"
+        viewController.leaderboardIdentifier = leaderboardID
 
-        // Present the leaderboard view controller
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-           let window = windowScene.windows.first {
-            window.rootViewController?.present(viewController, animated: true, completion: nil)
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if let window = windowScene.windows.first {
+                window.rootViewController?.present(viewController, animated: true, completion: nil)
+            }
         }
     }
 
