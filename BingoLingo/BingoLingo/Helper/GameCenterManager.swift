@@ -61,11 +61,41 @@ class GameCenterManager: NSObject, GKGameCenterControllerDelegate, ObservableObj
         }
     }
 
+    func reportAchievement(identifier: String, percentComplete: Double) {
+        guard isAuthenticated else {
+            print("Player is not authenticated")
+            return
+        }
+
+        let achievement = GKAchievement(identifier: identifier)
+        achievement.percentComplete = percentComplete
+        achievement.showsCompletionBanner = true
+
+        GKAchievement.report([achievement]) { error in
+            if let error = error {
+                print("Failed to report achievement: \(error.localizedDescription)")
+            } else {
+                print("Achievement reported successfully")
+            }
+        }
+    }
+
     func showLeaderboard() {
         let leaderboardID = "001"
         let viewController = GKGameCenterViewController(state: .leaderboards)
         viewController.gameCenterDelegate = self
         viewController.leaderboardIdentifier = leaderboardID
+
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+            if let window = windowScene.windows.first {
+                window.rootViewController?.present(viewController, animated: true, completion: nil)
+            }
+        }
+    }
+
+    func showAchievements() {
+        let viewController = GKGameCenterViewController(state: .achievements)
+        viewController.gameCenterDelegate = self
 
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             if let window = windowScene.windows.first {

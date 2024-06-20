@@ -163,6 +163,14 @@ struct MainView: View {
                 game = loadedGame
                 bingoCount = game.bingoCount()
                 markedCount = game.markedCount()
+                
+                if markedCount == 1 {
+                    gameCenterManager.reportAchievement(identifier: "start", percentComplete: 100.0)
+                }
+                
+                if markedCount == 25 {
+                    gameCenterManager.reportAchievement(identifier: "bingo", percentComplete: 100.0)
+                }
             }
         }
     }
