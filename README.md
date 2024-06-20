@@ -1,20 +1,20 @@
 # 2024-NC2-M16-Game-Center
+##  Authors 
+| [강희주(Rad)](https://github.com/heejukang) | [김유빈(Nini)](https://github.com/ubeeni) |
+|:---:|:---:|
+|![IMG_421E05CA4AD5-1](https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M16-GameCenter/assets/69234788/236e4f0a-d2a1-4650-b1f5-4ed24f31535b)|![KakaoTalk_Photo_2024-05-28-14-41-44 001](https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M10-Sandwich/assets/69234788/5c9f8054-dd60-4a9d-a2fa-af6649023428)|
+
 ## 🎥 Youtube Link
-(추후 만들어진 유튜브 링크 추가)
 
-## 💡 About Augmented Reality
-(해당 기술에 대한 조사 내용 정리)
+## 💡 About Game Center
+> Game Center
 
-> **예시** <br/><br/>
-_(내용 중략) <br/>
-ARKit에서 ARSCNView가 있다는 것을 알게 되었고, ARSCNView에서는 SceneKit을 활용하여 3D 콘텐츠를 증강하여 추가할 수 있다는 것을 알게 되었다. <br/>
-(내용 중략)_
 
 ## 🎯 What we focus on?
-> **예시** <br/> ARKit에서 ARSCNView를 활용하고, SCNText를 사용하여 쉽게 3D 텍스트를 생성하고 SCNAction을 통해 쉽게 에니메이션을 추가한다.
+> Game Center
 
 ## 💼 Use Case
-> **예시** <br/> 내 친구의 닉네임을 친구의 머리 위에 3D로 띄우고, 인터렉션하여 탭 할 때 움직이게 할 수 있다.
+> 맛집 탐방이라는 주제를 게이미피케이션을 적용한 빙고를 통해 서비스를 제공하며, 게임센터의 기능을 통해 서버를 대신하여 사용자간의 경쟁과 재참여를 유도한다.
 
 ## 🖼️ Prototype
 (프로토타입과 설명 추가)
