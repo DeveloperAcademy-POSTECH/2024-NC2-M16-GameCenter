@@ -19,6 +19,7 @@
 </br>
 
 ## 🎯 What we focus on?
+#### 멀티 플레이어(친구), 순위표(리더보드), 목표 달성(업적)
 ![Focus on](https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M16-GameCenter/assets/69234788/a24583cd-e4f8-493f-8cd4-e455dc321b03)
 
 </br>
