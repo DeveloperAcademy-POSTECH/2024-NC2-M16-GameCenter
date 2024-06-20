@@ -2,9 +2,10 @@
 ![게임센터](https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M16-GameCenter/assets/69234788/71c9566b-02d0-411b-913b-35783ac5ec6e)
 
 ##  Authors 
-| [강희주(Rad)](https://github.com/heejukang) | [김유빈(Nini)](https://github.com/ubeeni) |
+|[강희주(Rad)](https://github.com/heejukang)|[김유빈(Nini)](https://github.com/ubeeni)|
 |:---:|:---:|
-|![IMG_421E05CA4AD5-1](https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M16-GameCenter/assets/69234788/236e4f0a-d2a1-4650-b1f5-4ed24f31535b)|![KakaoTalk_Photo_2024-05-28-14-41-44 001](https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M10-Sandwich/assets/69234788/5c9f8054-dd60-4a9d-a2fa-af6649023428)|
+|🎨 **디자인** 🎨| 🍎 **테크** 🍎|
+|![래드](https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M16-GameCenter/assets/69234788/dae1a14a-3e95-40f4-bd9f-e88ac52b9aab)|![니니](https://github.com/DeveloperAcademy-POSTECH/2024-MC2-M10-Sandwich/assets/69234788/5c9f8054-dd60-4a9d-a2fa-af6649023428)|
 
 ## 🎥 Youtube Link
 
