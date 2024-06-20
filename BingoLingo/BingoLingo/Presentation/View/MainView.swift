@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct MainView: View {
-    @State private var isAuthenticated = false
-    @State private var showLeaderboard = false
-    
-    @State var game = BingoGame()
     @State private var bingoCount = 0
     @State private var markedCount = 0
-    
     @State private var isPressed = false
     @State private var isMapPressed = false
     @State private var isRankPressed = false
+    
+    @State var game = BingoGame()
+    
+    @StateObject private var gameCenterManager = GameCenterManager.shared
     
     var body: some View {
         ZStack {
@@ -61,12 +60,13 @@ struct MainView: View {
                     VStack(spacing: 0) {
                         Button(action: {
                             HapticManager.shared.notification(type: .success)
-                            showLeaderboard = true
+                            if gameCenterManager.isAuthenticated {
+                                gameCenterManager.showLeaderboard()
+                            } else {
+                                gameCenterManager.authenticateLocalPlayer()
+                            }
                         }) {
                             Image(isRankPressed ? .btnRank2 : .btnRank)
-                        }
-                        .sheet(isPresented: $showLeaderboard) {
-                            GameCenterViewControllerWrapper()
                         }
                         .onLongPressGesture(
                             minimumDuration: 0.1,
@@ -163,6 +163,14 @@ struct MainView: View {
                 game = loadedGame
                 bingoCount = game.bingoCount()
                 markedCount = game.markedCount()
+                
+                if markedCount == 1 {
+                    gameCenterManager.reportAchievement(identifier: "start", percentComplete: 100.0)
+                }
+                
+                if markedCount == 25 {
+                    gameCenterManager.reportAchievement(identifier: "bingo", percentComplete: 100.0)
+                }
             }
         }
     }
