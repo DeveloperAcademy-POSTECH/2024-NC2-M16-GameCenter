@@ -98,10 +98,9 @@ class GameCenterManager: NSObject, GKGameCenterControllerDelegate, ObservableObj
     // 순위표 보기 메서드
     func showLeaderboard() {
         let leaderboardID = "001"
-        let viewController = GKGameCenterViewController(state: .leaderboards)
+        let viewController = GKGameCenterViewController(leaderboardID: leaderboardID, playerScope: .friendsOnly, timeScope: .allTime)
         viewController.gameCenterDelegate = self
-        viewController.leaderboardIdentifier = leaderboardID
-
+        
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
             if let window = windowScene.windows.first {
                 window.rootViewController?.present(viewController, animated: true, completion: nil)
