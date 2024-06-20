@@ -1,4 +1,6 @@
 # 2024-NC2-M16-Game-Center
+![게임센터](https://github.com/DeveloperAcademy-POSTECH/2024-NC2-M16-GameCenter/assets/69234788/71c9566b-02d0-411b-913b-35783ac5ec6e)
+
 ##  Authors 
 | [강희주(Rad)](https://github.com/heejukang) | [김유빈(Nini)](https://github.com/ubeeni) |
 |:---:|:---:|
